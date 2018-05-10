@@ -8,8 +8,8 @@ we are using the following table in the example:
 ```sql
 CREATE TABLE `user`
 (
-	`id` int(11) NOT NULL,
-	`name` varchar(100) NOT NULL
+    `id` int(11) NOT NULL,
+    `name` varchar(100) NOT NULL
 );
 ```
 
@@ -74,12 +74,12 @@ int main(int argc, char *argv[])
 which generates the following sql query:
 ```sql
 SELECT
-	name as 'User',
-	User.id,
-	User.name,
-	User.id as 'Usr.id',
-	User.name as 'Usr.name',
-	CURDATE() as 'today'
+    name as 'User',
+    User.id,
+    User.name,
+    User.id as 'Usr.id',
+    User.name as 'Usr.name',
+    CURDATE() as 'today'
 FROM user User
 WHERE id IN(1,2,3);
 ```
