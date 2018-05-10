@@ -81,18 +81,6 @@ class Sqlinq
         inline Sqlinq& OuterJoin(QString table, QString onCondition, DynamicArgumentsDefault(Arg, arg)) {
             return this->Join("OUTER", table, onCondition, DynamicArgumentsFwd(arg));
         }
-        DynamicArgumentsDefaultTemplate(Arg)
-        Sqlinq& Join(QString type, QString table, QString onCondition, DynamicArgumentsDefault(Arg, arg))
-        {
-            QVariantList join;
-            DynamicArgumentsToVList(Arg, arg, join);
-            if(!this->join.isEmpty()) this->join += " ";
-            this->join += QString("%1 JOIN %2 ON %3")
-                     .arg(type)
-                     .arg(table)
-                     .arg(Sqlinq::constructCondition(onCondition, join));
-            return *this;
-        }
 
         // Group by
         Sqlinq& GroupBy(QString fieldname);
@@ -120,6 +108,20 @@ class Sqlinq
         QString toString();
 
     private:
+        // private implementations
+        DynamicArgumentsDefaultTemplate(Arg)
+        Sqlinq& Join(QString type, QString table, QString onCondition, DynamicArgumentsDefault(Arg, arg))
+        {
+            QVariantList join;
+            DynamicArgumentsToVList(Arg, arg, join);
+            if(!this->join.isEmpty()) this->join += " ";
+            this->join += QString("%1 JOIN %2 ON %3")
+                     .arg(type)
+                     .arg(table)
+                     .arg(Sqlinq::constructCondition(onCondition, join));
+            return *this;
+        }
+
         // helpers
         static QString escape(QVariant value) {
             if(value.type() == QVariant::Char || value.type() == QVariant::String || value.type() == QVariant::ByteArray) {
