@@ -129,7 +129,7 @@ QString Sqlinq::toString()
     if(!this->from.isEmpty()) {
         query.append(" FROM ").append(this->from);
         if(!this->fromAlias.isEmpty()) {
-            query.append(" as ").append(this->fromAlias);
+            query.append(" ").append(this->fromAlias);
         }
     }
 
