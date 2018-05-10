@@ -1,6 +1,6 @@
 # Sqlinq
 
-Sqlinq provides a [LINQ](https://en.wikipedia.org/wiki/Language_Integrated_Query) like way of creating SQL Queries in Qt.
+Sqlinq provides a [LINQ](https://en.wikipedia.org/wiki/Language_Integrated_Query) like interface for creating SQL Queries in Qt.
 
 ### Example
 
@@ -19,7 +19,7 @@ Now the Sqlinq example:
 #include <QCoreApplication>
 #include <QSqlDatabase>
 
-int main(int argc, char *argv[])
+int main()
 {
     QCoreApplication a(argc, argv);
 
